@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Work - vortexmotion</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* RESET DEFAULTS TO REMOVE UNWANTED MARGINS */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+/* FADE-UP ANIMATION */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+    /* NAVBAR / HEADER CLEAN FIX */
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      width: 100%;
+    }
+    .navbar {
+      max-width: 1100px;
+      margin: 0 auto;
+      height: 70px;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 20px;
+      font-weight: 800;
+      color: #111827;
+      text-decoration: none;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+    }
+    .nav-links li a {
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      color: #4b5563;
+      transition: color 0.2s;
+    }
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      color: #FF6600;
+    }
+
+    /* MAIN CONTAINER / WORK TITLE */
+    .work-container {
+      max-width: 1100px;
+      margin: 60px auto 40px auto;
+      padding: 0 20px;
+    }
+    .work-title {
+      font-size: 42px;
+      font-weight: 800;
+      color: #111827;
+      line-height: 1.2;
+      letter-spacing: -1px;
+    }
+
+    /* VIDEO PORTFOLIO GRID */
+    .portfolio-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .video-grid-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+    .video-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .video-container {
+      width: 100%;
+      background: #000000;
+      aspect-ratio: 16/9;
+      position: relative;
+    }
+    .video-player {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .video-info {
+      padding: 20px;
+    }
+    .video-info h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 6px;
+    }
+    .video-info p {
+      font-size: 14px;
+      color: #6b7280;
+      margin: 0;
+    }
+
+    /* FAQ SECTION STYLES */
+    .faq-section {
+      max-width: 1100px;
+      margin: 80px auto;
+      padding: 0 20px;
+    }
+    .faq-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: start;
+    }
+    .faq-left .section-tag {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #FF6600;
+      margin-bottom: 12px;
+    }
+    .faq-left .section-title {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: #111827;
+      margin-bottom: 16px;
+    }
+    .faq-left p {
+      font-size: 15px;
+      color: #4b5563;
+      line-height: 1.6;
+    }
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid #e5e7eb;
+    }
+    .faq-item {
+      border-bottom: 1px solid #e5e7eb;
+      padding: 20px 0;
+      cursor: pointer;
+    }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      font-size: 15px;
+      color: #111827;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      font-size: 14px;
+      color: #4b5563;
+      line-height: 1.6;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 250px;
+      padding-top: 12px;
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(180deg);
+      color: #FF6600;
+    }
+
+    /* FOOTER STYLES */
+    footer {
+      background: #0f172a;
+      color: #ffffff;
+      padding: 60px 20px 30px 20px;
+      margin-top: 80px;
+    }
+    .footer-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 40px;
+    }
+    .footer-brand h3 {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: #ffffff;
+    }
+    .footer-brand p {
+      font-size: 14px;
+      color: #94a3b8;
+      max-width: 320px;
+      line-height: 1.5;
+    }
+    .footer-links-group {
+      display: flex;
+      gap: 80px;
+    }
+    .footer-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .footer-col h4 {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #94a3b8;
+      margin-bottom: 16px;
+    }
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 0;
+      margin: 0;
+      align-items: flex-start;
+    }
+    .footer-col ul li a {
+      text-decoration: none;
+      color: #cbd5e1;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover {
+      color: #FF6600;
+    }
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 20px;
+      border-top: 1px solid #1e293b;
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: #64748b;
+    }
+
+    /* FLOATING BUTTON (ORANGE) */
+    .floating-apply-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #FF6600;
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: 0 4px 12px rgba(255, 102, 0, 0.3);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background-color 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .floating-apply-btn:hover {
+      background-color: #e55c00;
+    }
+
+    /* MODAL BACKDROP */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.65);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 16px;
+    }
+
+    .modal-backdrop.active {
+      display: flex;
+    }
+
+    /* MODAL CONTAINER */
+    .modal-card {
+      background: #ffffff;
+      color: #111827;
+      width: 100%;
+      max-width: 440px;
+      border-radius: 12px;
+      padding: 24px;
+      position: relative;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      background: transparent;
+      border: none;
+      font-size: 20px;
+      color: #6b7280;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .modal-heading {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      color: #111827;
+    }
+
+    /* FORM ELEMENTS */
+    .field-group {
+      margin-bottom: 16px;
+    }
+
+    .field-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 6px;
+    }
+
+    .field-label span {
+      color: #FF6600;
+    }
+
+    .text-input,
+    .select-input {
+      width: 100%;
+      height: 42px;
+      padding: 0 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 14px;
+      color: #111827;
+      background-color: #ffffff;
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+      pointer-events: auto !important;
+      user-select: text !important;
+    }
+
+    .text-input:focus,
+    .select-input:focus {
+      border-color: #FF6600;
+      box-shadow: 0 0 0 2px rgba(255, 102, 0, 0.15);
+    }
+
+    .select-wrapper {
+      position: relative;
+    }
+
+    .select-wrapper::after {
+      content: '∨';
+      font-size: 12px;
+      color: #6b7280;
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .field-note {
+      font-size: 12px;
+      color: #6b7280;
+      line-height: 1.4;
+      margin-top: 6px;
+    }
+
+    .field-error {
+      font-size: 12px;
+      color: #dc2626;
+      margin-top: 4px;
+      display: none;
+      font-weight: 500;
+    }
+
+    .field-group.has-error .field-error {
+      display: block;
+    }
+
+    .field-group.has-error .text-input,
+    .field-group.has-error .select-input {
+      border-color: #dc2626;
+    }
+
+    /* SUBMIT BUTTON */
+    .submit-btn {
+      width: 100%;
+      height: 44px;
+      background-color: #FF6600;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background-color 0.2s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: #e55c00;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header / Navigation -->
+  <header>
+    <nav class="navbar">
+      <a href="#" class="logo">vortexmotion</a>
+      <ul class="nav-links">
+        <li><a href="work.html" class="active">Our Work</a></li>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="work-container">
+    <h1 class="work-title">Videos that made SaaS <br>products look inevitable</h1>
+  </main>
+
+  <!-- VIDEO PORTFOLIO GRID -->
+  <section class="portfolio-section">
+    <div class="video-grid-container">
+      
+      <!-- Card 1: Attio Explainer -->
+      <div class="video-card">
+        <div class="video-container">
+          <video class="video-player" controls preload="metadata" loop playsinline>
+            <source src="0704.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="video-info">
+          <h3>Drive Explainer</h3>
+          <p>30 second explainer for Drive</p>
+        </div>
+      </div>
+
+      <!-- Card 2: Google Drive Explainer -->
+      <div class="video-card">
+        <div class="video-container">
+          <video class="video-player" controls preload="metadata" loop playsinline>
+            <source src="insta final.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="video-info">
+          <h3>custom insta saas</h3>
+          <p>30 second explainer for Google Drive</p>
+        </div>
+      </div>
+
+      <!-- Card 3: Blabber AI Video -->
+      <div class="video-card">
+        <div class="video-container">
+          <video class="video-player" controls preload="metadata" loop playsinline>
+            <source src="linear.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="video-info">
+          <h3>linear saas </h3>
+          <p>50 second UI animation for Blabber AI</p>
+        </div>
+      </div>
+
+      <!-- Card 4: Revolut Explainer -->
+      <div class="video-card">
+        <div class="video-container">
+          <video class="video-player" controls preload="metadata" loop playsinline>
+            <source src="final of kfc_2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="video-info">
+          <h3>short kfc ad</h3>
+          <p>30 second explainer for Revolut</p>
+        </div>
+      </div>
+
+      <!-- Card 5: AdLabs UI Animation -->
+      <div class="video-card">
+        <div class="video-container">
+          <video class="video-player" controls preload="metadata" loop playsinline>
+            <source src="final indrive saas.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="video-info">
+          <h3>indrive ui</h3>
+          <p>75 second UI Animation for AdLabs</p>
+        </div>
+      </div>
+
+      <!-- Card 6: Engain VSL -->
+      <div class="video-card">
+        <div class="video-container">
+          <video class="video-player" controls preload="metadata" loop playsinline>
+            <source src="0724.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="video-info">
+          <h3>Engain VSL</h3>
+          <p>3 minute VSL for engain.io</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section id="faq" class="faq-section">
+    <div class="faq-container">
+      <div class="faq-left">
+        <div class="section-tag">Support</div>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p>Have a question that isn't answered here? Reach out directly and we'll get back to you within 24 hours.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item" onclick="this.classList.toggle('active')">
+          <div class="faq-question">What file formats do you deliver? <span class="faq-icon">⌄</span></div>
+          <div class="faq-answer">We deliver optimized MP4, WebM formats for web performance, as well as high-res master files and Lottie animations if required.</div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('active')">
+          <div class="faq-question">What is your typical turnaround time? <span class="faq-icon">⌄</span></div>
+          <div class="faq-answer">Most standard SaaS product demos and UI animation packages are completed and ready for review within 5 to 7 business days.</div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('active')">
+          <div class="faq-question">Do you handle storyboard creation? <span class="faq-icon">⌄</span></div>
+          <div class="faq-answer">Yes! Every project begins with a structured storyboard mapping out the exact user flow before any animation work starts.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-wrapper">
+      <div class="footer-brand">
+        <h3>vortexmotion</h3>
+        <p>Premium motion graphics for SaaS companies that want to look like they mean business.</p>
+      </div>
+      <div class="footer-links-group">
+        <div class="footer-col">
+          <h4>PAGES</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="work.html">Our Work</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>FOLLOW US</h4>
+          <ul>
+            <li><a href="https://www.instagram.com/vortexmotion2/" target="_blank">Instagram</a></li>
+            <li><a href="https://www.youtube.com/@vortexmotion1" target="_blank">YouTube</a></li>
+          </ul>
+        </div>
+        
+    <div class="footer-bottom">
+      <span>&copy; 2026 vortexmotion. All rights reserved.</span>
+      <span>Motion Graphics for SaaS</span>
+    </div>
+  </footer>
+
+  <!-- FLOATING BUTTON TO OPEN POPUP -->
+  <button class="floating-apply-btn" id="triggerModal">
+    📅 Apply for a Project
+  </button>
+
+  <!-- MODAL POPUP -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="closeModal">&times;</button>
+      <h2 class="modal-heading">Apply for a Project</h2>
+
+      <form id="applyForm" novalidate>
+        
+        <!-- FULL NAME -->
+        <div class="field-group">
+          <label class="field-label" for="fullName">Full Name <span>*</span></label>
+          <input type="text" class="text-input" id="fullName" placeholder="Your name" required>
+        </div>
+
+        <!-- EMAIL -->
+        <div class="field-group" id="emailGroup">
+          <label class="field-label" for="userEmail">Email <span>*</span></label>
+          <input type="email" class="text-input" id="userEmail" placeholder="you@example.com" required>
+          <div class="field-error">Invalid e-mail please type a valid email</div>
+        </div>
+
+        <!-- BUDGET -->
+        <div class="field-group" id="budgetGroup">
+          <label class="field-label" for="budgetSelect">Budget <span>*</span></label>
+          <div class="select-wrapper">
+            <select class="select-input" id="budgetSelect" required>
+              <option value="" disabled selected>Select...</option>
+              <option value="less-800">Less than $800</option>
+              <option value="800-1500">$800-$1,500</option>
+              <option value="1500-3000">$1,500-$3,000</option>
+              <option value="3000-4500">$3,000-$4,500</option>
+              <option value="4500-plus">$4,500+</option>
+            </select>
+          </div>
+          <div class="field-note">
+            Heads up — projects under $800 aren't currently a fit. We'll point you in the right direction.
+          </div>
+          <div class="field-error" id="budgetErrorText">We're not the right fit for this one.</div>
+        </div>
+
+        <div class="field-note" style="margin-bottom: 16px;">
+          Qualified projects go straight to our booking page. Use the same email there so we can match your details.
+        </div>
+
+        <button type="submit" class="submit-btn">Apply for a Project</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const triggerModal = document.getElementById('triggerModal');
+    const closeModal = document.getElementById('closeModal');
+    
+    const applyForm = document.getElementById('applyForm');
+    const userEmail = document.getElementById('userEmail');
+    const emailGroup = document.getElementById('emailGroup');
+    
+    const budgetSelect = document.getElementById('budgetSelect');
+    const budgetGroup = document.getElementById('budgetGroup');
+
+    // Open & Close Modal
+    triggerModal.addEventListener('click', () => {
+      modalBackdrop.classList.add('active');
+    });
+
+    closeModal.addEventListener('click', () => {
+      modalBackdrop.classList.remove('active');
+    });
+
+    modalBackdrop.addEventListener('click', (e) => {
+      if (e.target === modalBackdrop) {
+        modalBackdrop.classList.remove('active');
+      }
+    });
+
+    // Email Validator regex
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    // Live Validation Clear
+    userEmail.addEventListener('input', () => {
+      if (isValidEmail(userEmail.value.trim())) {
+        emailGroup.classList.remove('has-error');
+      }
+    });
+
+    budgetSelect.addEventListener('change', () => {
+      if (budgetSelect.value !== 'less-800' && budgetSelect.value !== '') {
+        budgetGroup.classList.remove('has-error');
+      } else if (budgetSelect.value === 'less-800') {
+        budgetGroup.classList.add('has-error');
+      }
+    });
+
+    // Form Submission
+    applyForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let hasError = false;
+
+      // 1. Email check
+      if (!isValidEmail(userEmail.value.trim())) {
+        emailGroup.classList.add('has-error');
+        hasError = true;
+      } else {
+        emailGroup.classList.remove('has-error');
+      }
+
+      // 2. Budget check (< $800)
+      if (budgetSelect.value === 'less-800' || budgetSelect.value === '') {
+        budgetGroup.classList.add('has-error');
+        hasError = true;
+      } else {
+        budgetGroup.classList.remove('has-error');
+      }
+
+      // 3. Redirect if valid
+      if (!hasError) {
+        window.location.href = 'https://cal.com/vortexmotion/video-edit-launch';
+      }
+    });
+  </script>
+</body>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Selects headers, main sections, cards, text blocks, etc.
+    const elementsToAnimate = document.querySelectorAll(
+      "header, section, .video-card, .video-container, .video-info, h1, h2, h3, p, nav"
+    );
+
+    // Automatically add fade-up class to all of them
+    elementsToAnimate.forEach((el) => el.classList.add("fade-up"));
+
+    // Set up the scroll observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll(".fade-up").forEach((el) => observer.observe(el));
+  });
+</script>
+</html>

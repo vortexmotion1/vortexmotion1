@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VortexMotion - Premium SaaS Motion Graphics</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #fafdff;
+      color: #111827;
+      padding-top: 80px;
+    }
+
+    /* HEADER & NAVIGATION */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e5e7eb;
+      z-index: 1000;
+    }
+
+    .header-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 800;
+      color: #111827;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #4b5563;
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #FF6600;
+    }
+
+    .wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 100px;
+    }
+
+    section {
+      width: 100%;
+    }
+
+    /* HERO SECTION */
+    .hero-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      width: 100%;
+    }
+
+    .hero-left {
+      max-width: 550px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #ffffff;
+      border: 1px solid #e5e7eb;
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 24px;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #FF6600;
+      border-radius: 50%;
+    }
+
+    h1 {
+      font-size: 52px;
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -1.5px;
+      margin-bottom: 24px;
+    }
+
+    .highlight-orange {
+      color: #FF6600;
+      display: block;
+    }
+
+    .subtitle {
+      font-size: 17px;
+      line-height: 1.5;
+      color: #4b5563;
+      margin-bottom: 32px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .btn-primary {
+      background-color: #FF6600;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.1s;
+      box-shadow: 0 4px 14px rgba(255, 102, 0, 0.3);
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background-color: #e65c00;
+    }
+
+    .btn-secondary {
+      background-color: #ffffff;
+      color: #111827;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 24px;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: background-color 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background-color: #f9fafb;
+    }
+
+    /* ANIMATED CLIENT LOGOS MARQUEE */
+    .client-logos {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .client-logos-tag {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #9ca3af;
+    }
+
+    .marquee-container {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
+
+    .marquee-track {
+      display: inline-flex;
+      align-items: center;
+      gap: 32px;
+      animation: marqueeScroll 20s linear infinite;
+    }
+
+    .marquee-track span {
+      font-weight: 700;
+      color: #9ca3af;
+      font-size: 14px;
+      background: #f3f4f6;
+      padding: 6px 14px;
+      border-radius: 8px;
+      letter-spacing: -0.2px;
+      cursor: default;
+      transition: color 0.2s;
+    }
+
+    .marquee-track span:hover {
+      color: #111827;
+    }
+
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .hero-right {
+      position: relative;
+      width: 450px;
+      height: 400px;
+    }
+
+    .hero-review-card {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      border: 1px solid #f0f0f0;
+      width: 320px;
+      position: absolute;
+    }
+
+    .card-top {
+      top: 0;
+      left: 20px;
+      z-index: 1;
+    }
+
+    .card-middle {
+      top: 130px;
+      left: 80px;
+      z-index: 2;
+    }
+
+    .section-tag {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #FF6600;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: #111827;
+      margin-bottom: 24px;
+    }
+
+    /* SECTION 1: VIDEO GRID */
+    .video-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .video-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    }
+
+    .video-player {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+      background-color: #000;
+    }
+
+    .video-info {
+      padding: 24px;
+    }
+
+    .video-info h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .video-info p {
+      font-size: 14px;
+      color: #4b5563;
+    }
+
+    /* SECTION 2: BUILT FOR FOUNDERS */
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    }
+
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      background: #fff5ed;
+      color: #FF6600;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .feature-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      font-size: 15px;
+      color: #4b5563;
+      line-height: 1.5;
+    }
+
+    /* SECTION 3: FIVE STEPS */
+    .steps-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .step-item {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      padding: 20px 24px;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-weight: 600;
+    }
+
+    .step-item.active {
+      background: #FF6600;
+      color: #ffffff;
+      border-color: #FF6600;
+    }
+
+    .step-num {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    /* INTAKE FORM STYLING */
+    .form-box {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+    }
+
+    .form-box-header {
+      background-color: #FF6600;
+      color: #ffffff;
+      padding: 14px 24px;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .form-box-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-row-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-label-skeleton {
+      width: 80px;
+      height: 10px;
+      background-color: #e5e7eb;
+      border-radius: 4px;
+    }
+
+    .form-input-styled {
+      width: 100%;
+      height: 43px;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      background-color: #f8fafc;
+    }
+
+    .form-textarea-styled {
+      width: 100%;
+      height: 90px;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      background-color: #f8fafc;
+    }
+
+    .form-checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background-color: #f8fafc;
+      border: 1px solid #e5e7eb;
+      padding: 0 14px;
+      height: 43px;
+      border-radius: 8px;
+    }
+
+    .form-box .submit-btn {
+      width: 100%;
+      background: #FF6600;
+      color: #ffffff;
+      border: none;
+      padding: 14px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 8px;
+    }
+
+    .form-box .submit-btn:hover {
+      background: #e65c00;
+    }
+
+    /* SECTION 4: TESTIMONIALS */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testimonial-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    }
+
+    .stars {
+      color: #fbbf24;
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+
+    .quote-text {
+      font-size: 14px;
+      color: #374151;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .user-details h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .user-details span {
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    /* SECTION 5: APPLY / WORK WITH US */
+    .apply-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    .apply-left-desc {
+      font-size: 15px;
+      color: #4b5563;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .stat-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .stat-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #6b7280;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .stat-green {
+      color: #10b981;
+      font-weight: 700;
+    }
+
+    .stat-value {
+      font-size: 32px;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 4px;
+    }
+
+    .stat-sub {
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    .apply-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 20px;
+      padding: 36px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #111827;
+    }
+
+    .form-group label span {
+      color: #FF6600;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 14px;
+      outline: none;
+      background: #ffffff;
+      color: #111827;
+      transition: border-color 0.2s, background-color 0.2s;
+    }
+
+    .form-control:focus {
+      border-color: #FF6600;
+    }
+
+    .form-control.input-error {
+      border-color: #ef4444 !important;
+      background-color: #fef2f2;
+    }
+
+    .error-text {
+      color: #ef4444;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 6px;
+      display: none;
+    }
+
+    .form-notice {
+      font-size: 12px;
+      color: #6b7280;
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+
+    .apply-btn {
+      width: 100%;
+      background: #FF6600;
+      color: #ffffff;
+      border: none;
+      padding: 16px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .apply-btn:hover {
+      background: #e65c00;
+    }
+
+    /* SECTION 6: FAQ ACCORDION STYLES */
+    .faq-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    .faq-left p {
+      font-size: 15px;
+      color: #4b5563;
+    }
+
+    .faq-left a {
+      color: #FF6600;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #e5e7eb;
+      padding: 20px 0;
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 15px;
+      color: #111827;
+      user-select: none;
+      transition: color 0.2s ease;
+    }
+
+    .faq-question:hover {
+      color: #FF6600;
+    }
+
+    .faq-icon {
+      color: #9ca3af;
+      font-size: 16px;
+      transition: transform 0.3s ease, color 0.2s ease;
+      display: inline-block;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(180deg);
+      color: #FF6600;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0, 1, 0, 1), padding 0.35s ease;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #4b5563;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      padding-top: 14px;
+      transition: max-height 0.35s cubic-bezier(0.5, 0, 0.5, 1), padding 0.35s ease;
+    }
+
+    /* MODAL OVERLAY & POPUP */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      background: #ffffff;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 480px;
+      padding: 32px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      position: relative;
+      transform: translateY(20px);
+      transition: transform 0.3s ease;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-overlay.active .modal-card {
+      transform: translateY(0);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .modal-header h3 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #111827;
+    }
+
+    .modal-close-btn {
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #9ca3af;
+      cursor: pointer;
+      padding: 4px;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+
+    .modal-close-btn:hover {
+      color: #111827;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0b1120;
+      color: #ffffff;
+      padding: 80px 20px 40px 20px;
+      margin-top: 100px;
+    }
+
+    .footer-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 80px;
+    }
+
+    .footer-brand h3 {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .footer-brand p {
+      color: #94a3b8;
+      font-size: 14px;
+      max-width: 280px;
+      line-height: 1.5;
+    }
+
+    .footer-links-group {
+      display: flex;
+      gap: 60px;
+    }
+
+    .footer-col h4 {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #94a3b8;
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 12px;
+    }
+
+    .footer-col ul li a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover {
+      color: #FF6600;
+    }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 30px;
+      border-top: 1px solid #1e293b;
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: #64748b;
+    }
+
+    /* FADE-UP ANIMATION CLASSES */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER NAVBAR -->
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo">VortexMotion</a>
+      <ul class="nav-links">
+        <li><a href="work.html">Our Work</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <button class="btn-primary modal-trigger" type="button">Start Your Project</button>
+    </div>
+  </header>
+
+  <div class="wrapper">
+
+    <!-- HERO SECTION -->
+    <div class="hero-container fade-up">
+      <div class="hero-left">
+        <div class="badge">
+          <span class="badge-dot"></span>
+          <span>Helping SaaS Founders Grow</span>
+        </div>
+
+        <h1>
+          Motion Graphics<br />
+          that Make You<br />
+          <span class="highlight-orange">Impossible to<br />Ignore</span>
+        </h1>
+
+        <p class="subtitle">
+          We help early stage SaaS founders get premium motion graphics videos produced, revised, and delivered in under 2 weeks.
+        </p>
+
+        <div class="hero-buttons">
+          <button class="btn-primary modal-trigger" type="button">Start Your Project</button>
+          <a href="#work" class="btn-secondary">View Our Work &rarr;</a>
+        </div>
+
+        <div class="client-logos">
+          <div class="client-logos-tag">Trusted by SaaS teams at</div>
+          <div class="marquee-container">
+            <div class="marquee-track">
+              <span>Blabber AI</span>
+              <span>AdLabs</span>
+              <span>ProPickz</span>
+              <span>Excela</span>
+              <span>The Rumor</span>
+              <span>Edit With Ava</span>
+              <span>Trade Work SaaS</span>
+              <span>Engain.io</span>
+              <span>Blabber AI</span>
+              <span>AdLabs</span>
+              <span>ProPickz</span>
+              <span>Excela</span>
+              <span>The Rumor</span>
+              <span>Edit With Ava</span>
+              <span>Trade Work SaaS</span>
+              <span>Engain.io</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-review-card card-top">
+          <div class="stars">★★★★★</div>
+          <p class="quote-text">"Awesome. Thanks, love your work man, appreciate you getting things across the finish line for us."</p>
+          <div class="user-info">
+            <img src="https://i.pravatar.cc/100?img=33" alt="Andrew" class="avatar" />
+            <div class="user-details">
+              <h4>Andrew</h4>
+              <span>@adlabs</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-review-card card-middle">
+          <div class="stars">★★★★★</div>
+          <p class="quote-text">"really really happy with how the video turned out. high-quality work and quick turnaround 🙏"</p>
+          <div class="user-info">
+            <img src="https://i.pravatar.cc/100?img=12" alt="Matthias" class="avatar" />
+            <div class="user-details">
+              <h4>Matthias</h4>
+              <span>@editwithava</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 1: EVERY VIDEO TYPE -->
+    <section id="work" class="fade-up">
+      <div class="section-tag">What We Do</div>
+      <h2 class="section-title">Every video type your SaaS needs</h2>
+      
+      <div class="video-grid">
+        <div class="video-card">
+          <video class="video-player" controls preload="metadata" loop playsinline>
+            <source src="Desktop/seam rush final.mp4" type="video/mp4" />
+            Your browser does not support video elements.
+          </video>
+          <div class="video-info">
+            <h3>seamrush ui</h3>
+            <p>Cinematic feature walkthroughs that convert browsers into buyers.</p>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <video class="video-player" controls preload="metadata" loop playsinline>
+            <source src="Desktop/myfitnesspal final.mp4" type="video/mp4" />
+            Your browser does not support video elements.
+          </video>
+          <div class="video-info">
+            <h3>my fitness pal</h3>
+            <p>Complex features made instantly clear in 60 seconds or less.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: BUILT FOR FOUNDERS -->
+    <section class="fade-up">
+      <div class="section-tag">Why VortexMotion</div>
+      <h2 class="section-title">Built for founders who are already doing too much</h2>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">⏱</div>
+          <h3>Under 10 business days</h3>
+          <p>From asset receipt to final file delivered fast without scope creep or delays.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📄</div>
+          <h3>Aligned before production</h3>
+          <p>We build full Figma storyboards and walk through details before a single frame is animated.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: FIVE STEPS -->
+    <section id="how-it-works" class="fade-up">
+      <div class="section-tag">How It Works</div>
+      <h2 class="section-title">Five steps from brief to final file</h2>
+
+      <div class="steps-container">
+        <div class="steps-list">
+          <div class="step-item active">
+            <span class="step-num">01</span>
+            <span>Intake Form</span>
+          </div>
+          <div class="step-item">
+            <span class="step-num">02</span>
+            <span>Storyboard and Script</span>
+          </div>
+          <div class="step-item">
+            <span class="step-num">03</span>
+            <span>Finalization Call</span>
+          </div>
+          <div class="step-item">
+            <span class="step-num">04</span>
+            <span>Production</span>
+          </div>
+          <div class="step-item">
+            <span class="step-num">05</span>
+            <span>One Revision Round and Delivery</span>
+          </div>
+        </div>
+
+        <!-- WIREFRAME INTAKE FORM -->
+        <div class="form-box">
+          <div class="form-box-header">Project Intake Form</div>
+          
+          <div class="form-box-body">
+            <div class="form-row-2col">
+              <div class="form-field">
+                <div class="form-label-skeleton"></div>
+                <div class="form-input-styled"></div>
+              </div>
+              <div class="form-field">
+                <div class="form-label-skeleton"></div>
+                <div class="form-input-styled"></div>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <div class="form-label-skeleton"></div>
+              <div class="form-input-styled"></div>
+            </div>
+
+            <div class="form-field">
+              <div class="form-label-skeleton" style="width: 110px;"></div>
+              <div class="form-textarea-styled"></div>
+            </div>
+
+            <div class="form-field">
+              <div class="form-label-skeleton" style="width: 90px;"></div>
+              <div class="form-checkbox-row">
+                <div style="width: 16px; height: 16px; background-color: #e5e7eb; border-radius: 4px;"></div>
+                <div class="form-label-skeleton" style="width: 90px;"></div>
+              </div>
+            </div>
+
+            <button class="submit-btn" type="button">Submit</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: TESTIMONIALS -->
+    <section id="testimonials" class="fade-up">
+      <div class="section-tag">Testimonials</div>
+      <h2 class="section-title">Trusted by SaaS founders <br><span style="color: #FF6600;">who needed results fast.</span></h2>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="quote-text">"Awesome. Thanks, love your work man, appreciate you getting things across the finish line for us."</p>
+          <div class="user-info">
+            <img src="https://i.pravatar.cc/100?img=33" alt="Andrew" class="avatar" />
+            <div class="user-details">
+              <h4>Andrew</h4>
+              <span>@adlabs</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="quote-text">"Really really happy with how the video turned out. High-quality work and quick turnaround 🙏"</p>
+          <div class="user-info">
+            <img src="https://i.pravatar.cc/100?img=12" alt="Matthias" class="avatar" />
+            <div class="user-details">
+              <h4>Matthias</h4>
+              <span>@editwithava</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="quote-text">"Done mate 🙏 amazing work man, really liked it, and appreciate you letting Yochai watch you work."</p>
+          <div class="user-info">
+            <img src="https://i.pravatar.cc/100?img=60" alt="Mordehai" class="avatar" />
+            <div class="user-details">
+              <h4>Mordehai</h4>
+              <span>@tracebackusa</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: APPLY / WORK WITH US -->
+    <section id="apply" class="fade-up">
+      <div class="apply-section">
+        <div class="apply-left">
+          <div class="section-tag">Apply to work with us</div>
+          <h2 class="section-title">Let's talk about your project.</h2>
+          <p class="apply-left-desc">
+            Fill out a quick form and book a time directly. We will walk through your goals, the type of video you need, and what the process looks like from there.
+          </p>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-header">
+                <span>Projects completed this month</span>
+                <span class="stat-green">↑ 33.3% Past 30 days</span>
+              </div>
+              <div class="stat-value">16</div>
+              <div class="stat-sub stat-green">+2 this week</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-header">
+                <span>Average delivery time</span>
+                <span>Consistent</span>
+              </div>
+              <div class="stat-value">10 days</div>
+              <div class="stat-sub">per project</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-header">
+                <span>Satisfaction rate</span>
+                <span class="stat-green">↑ 4% vs last month</span>
+              </div>
+              <div class="stat-value">96%</div>
+              <div class="stat-sub stat-green">↑ from last quarter</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-header">
+                <span>Avg revision rounds</span>
+                <span>Industry avg: 2.4</span>
+              </div>
+              <div class="stat-value">0.9</div>
+              <div class="stat-sub">per project</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="apply-card">
+          <form class="apply-form" novalidate>
+            <div class="form-group">
+              <label>Full Name <span>*</span></label>
+              <input type="text" class="form-control name-input" placeholder="Your name" />
+              <div class="error-text name-error">Please enter your full name.</div>
+            </div>
+
+            <div class="form-group">
+              <label>Email <span>*</span></label>
+              <input type="email" class="form-control email-input" placeholder="you@example.com" />
+              <div class="error-text email-error">Please type a valid e-mail.</div>
+            </div>
+
+            <div class="form-group">
+              <label>Budget <span>*</span></label>
+              <select class="form-control budget-input">
+                <option value="">Select...</option>
+                <option value="under-800">Less than $800</option>
+                <option value="800-1500">$800–$1,500</option>
+                <option value="1500-3000">$1,500–$3,000</option>
+                <option value="3000-4500">$3,000–$4,500</option>
+                <option value="4500+">$4,500+</option>
+              </select>
+              <div class="error-text budget-error">Please select a budget range.</div>
+            </div>
+
+            <p class="form-notice">
+              Heads up—projects under $800 aren't currently a fit. We'll point you in the right direction.<br /><br />
+              Qualified projects go straight to our booking page. Use the same email there so we can match your details.
+            </p>
+
+            <button type="submit" class="apply-btn">Apply for a Project</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: ANIMATED FAQ ACCORDION -->
+    <section id="faq" class="fade-up">
+      <div class="faq-container">
+        <div class="faq-left">
+          <div class="section-tag">FAQ</div>
+          <h2 class="section-title">Questions we get asked a lot</h2>
+          <p>Still have questions? <a href="#apply">Get in touch.</a></p>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>How does your process work?</span>
+              <span class="faq-icon">∨</span>
+            </div>
+            <div class="faq-answer">
+              After your 50% deposit, we send a structured intake form where you share your brief, brand assets, UI references (Figma links or screenshots), and any inspiration videos. Script is optional at this stage. We then build a full Figma storyboard and refine the script with you. Before production begins, we hop on a short finalization call to confirm everything looks right. We then edit the full video, you get one revision round via Frame.io, and we deliver the final file.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>How long does a video take to produce?</span>
+              <span class="faq-icon">∨</span>
+            </div>
+            <div class="faq-answer">
+              Each video is delivered within 10 business days of receiving your completed assets. Rush delivery in 5 business days is available for an additional flat fee.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>What do you need from us to get started?</span>
+              <span class="faq-icon">∨</span>
+            </div>
+            <div class="faq-answer">
+              Your brief, brand assets (logo, fonts, colors, brand guidelines), any UI references such as Figma links or screenshots of your product, and inspiration videos that match the style you are after. Script is optional. If you do not have one, we will write it together.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>How many revisions are included?</span>
+              <span class="faq-icon">∨</span>
+            </div>
+            <div class="faq-answer">
+              One revision round is included on every project. You review the draft via Frame.io and leave timestamped comments. We apply your changes and deliver the final file. Additional revision rounds are available for a flat fee.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>What does it cost?</span>
+              <span class="faq-icon">∨</span>
+            </div>
+            <div class="faq-answer">
+              Project-based pricing runs from $800 to $5,500 per video depending on complexity and the editor assigned. Retainer plans start at $6,000 per month for four videos per month with priority turnaround. Get in touch for a quote.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Do you work with early stage startups?</span>
+              <span class="faq-icon">∨</span>
+            </div>
+            <div class="faq-answer">
+              Yes. We built this service specifically for pre-Series A SaaS companies that need premium looking content without enterprise budgets or long agency timelines.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- POPUP MODAL -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Apply for a Project</h3>
+        <button class="modal-close-btn" id="closeModalBtn" type="button">&times;</button>
+      </div>
+
+      <form class="apply-form" novalidate>
+        <div class="form-group">
+          <label>Full Name <span>*</span></label>
+          <input type="text" class="form-control name-input" placeholder="Your name" />
+          <div class="error-text name-error">Please enter your full name.</div>
+        </div>
+
+        <div class="form-group">
+          <label>Email <span>*</span></label>
+          <input type="email" class="form-control email-input" placeholder="you@example.com" />
+          <div class="error-text email-error">Please type a valid e-mail.</div>
+        </div>
+
+        <div class="form-group">
+          <label>Budget <span>*</span></label>
+          <select class="form-control budget-input">
+            <option value="">Select...</option>
+            <option value="under-800">Less than $800</option>
+            <option value="800-1500">$800–$1,500</option>
+            <option value="1500-3000">$1,500–$3,000</option>
+            <option value="3000-4500">$3,000–$4,500</option>
+            <option value="4500+">$4,500+</option>
+          </select>
+          <div class="error-text budget-error">Please select a budget range.</div>
+        </div>
+
+        <p class="form-notice">
+          Heads up—projects under $800 aren't currently a fit. We'll point you in the right direction.<br /><br />
+          Qualified projects go straight to our booking page. Use the same email there so we can match your details.
+        </p>
+
+        <button type="submit" class="apply-btn">Apply for a Project</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-wrapper fade-up">
+      <div class="footer-brand">
+        <h3>VortexMotion</h3>
+        <p>Premium motion graphics for fast-growing SaaS companies.</p>
+      </div>
+
+      <div class="footer-links-group">
+        <div class="footer-col">
+          <h4>PAGES</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="work.html">Our Work</a></li>
+            <li><a href="#apply">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>FOLLOW US</h4>
+          <ul>
+            <li><a href="https://www.instagram.com/vortexmotion2/" target="_blank">Instagram</a></li>
+            <li><a href="https://www.youtube.com/@vortexmotion1" target="_blank">YouTube</a></li>
+          </ul>
+        </div>
+
+
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 VortexMotion. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      /* Scroll Animations (IntersectionObserver) */
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll(".fade-up").forEach((el) => observer.observe(el));
+
+      /* Modal Trigger Handlers */
+      const modalOverlay = document.getElementById("modalOverlay");
+      const closeModalBtn = document.getElementById("closeModalBtn");
+      const modalTriggers = document.querySelectorAll(".modal-trigger");
+
+      modalTriggers.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          modalOverlay.classList.add("active");
+        });
+      });
+
+      closeModalBtn.addEventListener("click", () => {
+        modalOverlay.classList.remove("active");
+      });
+
+      modalOverlay.addEventListener("click", (e) => {
+        if (e.target === modalOverlay) {
+          modalOverlay.classList.remove("active");
+        }
+      });
+
+      /* FAQ Accordion Expansion Logic */
+      const faqItems = document.querySelectorAll(".faq-item");
+
+      faqItems.forEach((item) => {
+        const question = item.querySelector(".faq-question");
+        question.addEventListener("click", () => {
+          const isActive = item.classList.contains("active");
+
+          // Close any open FAQ items first (accordion behavior)
+          faqItems.forEach((otherItem) => otherItem.classList.remove("active"));
+
+          // Toggle current FAQ item
+          if (!isActive) {
+            item.classList.add("active");
+          }
+        });
+      });
+
+      /* Form Validation Logic */
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      document.querySelectorAll(".apply-form").forEach((form) => {
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const nameInput = form.querySelector(".name-input");
+          const emailInput = form.querySelector(".email-input");
+          const budgetInput = form.querySelector(".budget-input");
+
+          const nameError = form.querySelector(".name-error");
+          const emailError = form.querySelector(".email-error");
+          const budgetError = form.querySelector(".budget-error");
+
+          let isValid = true;
+
+          // Reset status
+          nameInput.classList.remove("input-error");
+          emailInput.classList.remove("input-error");
+          budgetInput.classList.remove("input-error");
+          nameError.style.display = "none";
+          emailError.style.display = "none";
+          budgetError.style.display = "none";
+
+          // Validate Name
+          if (!nameInput.value.trim()) {
+            nameInput.classList.add("input-error");
+            nameError.style.display = "block";
+            isValid = false;
+          }
+
+          // Validate Email
+          if (!emailInput.value.trim() || !emailRegex.test(emailInput.value.trim())) {
+            emailInput.classList.add("input-error");
+            emailError.textContent = "Please type a valid e-mail.";
+            emailError.style.display = "block";
+            isValid = false;
+          }
+
+          // Validate Budget
+          if (!budgetInput.value) {
+            budgetInput.classList.add("input-error");
+            budgetError.textContent = "Please select a budget range.";
+            budgetError.style.display = "block";
+            isValid = false;
+          } else if (budgetInput.value === "under-800") {
+            budgetInput.classList.add("input-error");
+            budgetError.textContent = "We're not the right fit for this one.";
+            budgetError.style.display = "block";
+            isValid = false;
+          }
+
+          // If valid and $800+, redirect
+          if (isValid) {
+            window.location.href = "https://cal.com/vortexmotion/video-edit-launch";
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
