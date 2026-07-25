@@ -980,3 +980,33 @@ footer {
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
 }
+/* MOBILE RESPONSIVE FIXES */
+@media (max-width: 768px) {
+  .hero-container,
+  .apply-section,
+  .faq-container,
+  .footer-wrapper {
+    flex-direction: column !important;
+  }
+
+  .video-grid,
+  .features-grid,
+  .testimonials-grid,
+  .stats-grid,
+  .form-row-2col {
+    grid-template-columns: 1fr !important;
+  }
+
+  .hero-right {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .hero-review-card {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    margin-bottom: 20px;
+  }
+}
